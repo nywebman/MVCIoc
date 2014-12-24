@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using MVCIoc.Infrastructure;
 
 namespace MVCIoc
 {
@@ -23,6 +24,9 @@ namespace MVCIoc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            var factory = new CustomControllerFactory();
+            ControllerBuilder.Current.SetControllerFactory(factory);
         }
     }
 }

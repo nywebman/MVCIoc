@@ -9,9 +9,13 @@ namespace MVCIoc.Controllers
 {
     public class ProteinTrackerController : Controller
     {
-        private ProteinTrackingService proteinTrackingService = new ProteinTrackingService();
-        //
-        // GET: /ProteinTracker/
+        private IProteinTrackingService proteinTrackingService;
+
+        public ProteinTrackerController(IProteinTrackingService proteinTrackingService)
+        {
+            this.proteinTrackingService = proteinTrackingService;
+        }
+
         public ActionResult Index()
         {
             ViewBag.Total = proteinTrackingService.Total;
