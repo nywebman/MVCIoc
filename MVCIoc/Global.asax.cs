@@ -25,8 +25,10 @@ namespace MVCIoc
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            var factory = new CustomControllerFactory();
-            ControllerBuilder.Current.SetControllerFactory(factory);
+            Bootstrapper.Initialise();
+
+            //var factory = new CustomControllerFactory();
+            //ControllerBuilder.Current.SetControllerFactory(factory);
         }
     }
 }
