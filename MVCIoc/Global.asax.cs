@@ -17,6 +17,8 @@ namespace MVCIoc
     {
         protected void Application_Start()
         {
+            Bootstrapper.Initialise();
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
@@ -24,11 +26,6 @@ namespace MVCIoc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-
-            Bootstrapper.Initialise();
-
-            //var factory = new CustomControllerFactory();
-            //ControllerBuilder.Current.SetControllerFactory(factory);
         }
     }
 }
