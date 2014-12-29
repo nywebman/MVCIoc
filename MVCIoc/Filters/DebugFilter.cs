@@ -9,7 +9,7 @@ namespace MVCIoc.Filters
 {
     public class DebugFilter : ActionFilterAttribute
     {
-        private readonly IDebugMessageService debugMessageService;
+        private IDebugMessageService debugMessageService;
 
         public DebugFilter(IDebugMessageService debugMessageService)
         {

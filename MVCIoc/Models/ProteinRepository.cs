@@ -14,8 +14,14 @@ namespace MVCIoc.Models
 
     public class ProteinRepository : IProteinRepository
     {
-        private static ProteinData data = new ProteinData();
+        private readonly string _dataSource;
 
+        public ProteinRepository(string dataSource)
+        {
+            _dataSource = dataSource;
+        }
+
+        private static ProteinData data = new ProteinData();
         public ProteinData GetData(DateTime dateTime)
         {
             return data;

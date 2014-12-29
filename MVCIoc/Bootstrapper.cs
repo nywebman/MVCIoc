@@ -37,8 +37,10 @@ namespace MVCIoc
             WithName.Default);
 
 
+        container.RegisterType<IProteinRepository, ProteinRepository>(new InjectionConstructor("test data source")); //goes to ProteinRepository constructor asking for dataSource
+
         //using unity to manually map below, above to automate it
-            //commented out below because of above code
+        //commented out below because of above code
         //container.RegisterType<IProteinTrackingService, ProteinTrackingService>();
         //container.RegisterType<IProteinRepository, ProteinRepository>();
     }
