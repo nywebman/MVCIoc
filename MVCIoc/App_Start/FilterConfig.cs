@@ -9,7 +9,7 @@ namespace MVCIoc
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(DependencyResolver.Current.GetService<DebugFilter>());
+          //  filters.Add(DependencyResolver.Current.GetService<DebugFilter>());
         }
     }
 }
