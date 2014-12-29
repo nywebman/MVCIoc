@@ -1,10 +1,11 @@
-﻿@model dynamic
+﻿@inherits MVCIoc.Pages.ProteinTrackerBasePage
 
 @{
     ViewBag.Title = "Protein Tracker";
     Layout = "../Shared/_Layout.cshtml";
 }
 
+@AnalyticService.Code
 <h2>Protein Tracker</h2>
 Total: @ViewBag.Total
 Goal: @ViewBag.Goal

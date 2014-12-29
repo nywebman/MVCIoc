@@ -222,6 +222,9 @@
     <Compile Include="Models\ProteinData.cs" />
     <Compile Include="Models\ProteinRepository.cs" />
     <Compile Include="Models\ProteinTrackingService.cs" />
+    <Compile Include="Models\AnalyticService.cs" />
+    <Compile Include="Models\IAnalyticService.cs" />
+    <Compile Include="Pages\ProteinTrackerBasePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
