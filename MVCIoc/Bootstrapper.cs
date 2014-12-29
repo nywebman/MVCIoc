@@ -1,3 +1,6 @@
+using System;
+using System.Net.Http.Headers;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using MVCIoc.Models;
@@ -36,16 +39,34 @@ namespace MVCIoc
             WithMappings.FromMatchingInterface,
             WithName.Default);
 
+        //switch depending on config
+        container.RegisterType<IProteinRepository, ProteinRepository>("StandardRepository",
+            new InjectionConstructor("test"));
+        container.RegisterType<IProteinRepository, DebugProteinRepository>("DebugRepository");
 
-        //container.RegisterType<IProteinRepository, ProteinRepository>(new InjectionConstructor("test data source")); //goes to ProteinRepository constructor asking for dataSource
-        container.RegisterInstance(typeof (IProteinRepository), new ProteinRepository("test data source 123")); //construct a full object
-            //essenially creating a singleton above
 
+        var repositoryType = WebConfigurationManager.AppSettings["RepositoryType"];
+        container.RegisterType<IProteinTrackingService, ProteinTrackingService>(
+            new InjectionConstructor(container.Resolve<IProteinRepository>(repositoryType)));
 
-        //using unity to manually map below, above to automate it
-        //commented out below because of above code
-        //container.RegisterType<IProteinTrackingService, ProteinTrackingService>();
-        //container.RegisterType<IProteinRepository, ProteinRepository>();
     }
   }
+
+    public class DebugProteinRepository : IProteinRepository
+    {
+        public ProteinData GetData(DateTime dateTime)
+        {
+            return new ProteinData();
+        }
+
+        public void SetTotal(DateTime dateTime, int value)
+        {
+            //
+        }
+
+        public void SetGoal(DateTime dateTime, int value)
+        {
+            //
+        }
+    }
 }
