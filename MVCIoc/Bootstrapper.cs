@@ -37,7 +37,10 @@ namespace MVCIoc
             WithName.Default);
 
 
-        container.RegisterType<IProteinRepository, ProteinRepository>(new InjectionConstructor("test data source")); //goes to ProteinRepository constructor asking for dataSource
+        //container.RegisterType<IProteinRepository, ProteinRepository>(new InjectionConstructor("test data source")); //goes to ProteinRepository constructor asking for dataSource
+        container.RegisterInstance(typeof (IProteinRepository), new ProteinRepository("test data source 123")); //construct a full object
+            //essenially creating a singleton above
+
 
         //using unity to manually map below, above to automate it
         //commented out below because of above code
